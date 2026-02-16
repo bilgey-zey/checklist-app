@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Checklists</title>
+  <link rel="stylesheet" href="/css/todos.css">
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <div class="card">
+
+      <div class="card-header">
+        <h2>My Checklists</h2>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+      </div>
+
+      <div class="add-section">
+        <input type="text" id="newTodo" placeholder="New checklist title">
+        <button id="addBtn">Add</button>
+      </div>
+
+      <div id="todoList" class="list"></div>
+
+      <div class="share-section">
+  <h3>Share Checklist</h3>
+
+  <input type="email" id="shareEmail" placeholder="User email">
+
+  <button id="shareBtn">Share Selected Checklist</button>
+</div>
+
+
+    </div>
+
+  </div>
+
+  <script type="module" src="/js/todos.js"></script>
+</body>
+</html>

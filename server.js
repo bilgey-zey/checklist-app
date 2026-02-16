@@ -8,16 +8,21 @@ const PORT = 3000;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static("frontend")); // frontend servis
 
+/*
+AUTH MIDDLEWARE
+*/
+function simpleAuth(req, res, next) {
+  const userId = req.headers["user-id"];
 
-import path from "path";
-import { fileURLToPath } from "url";
+  if (!userId) {
+    return res.status(401).json({ message: "Not authenticated" });
+  }
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-app.use(express.static("frontend"));
-
+  req.userId = parseInt(userId);
+  next();
+}
 
 /*
 REGISTER
@@ -72,6 +77,42 @@ app.post("/api/login", async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
+
+/*
+GET USER CHECKLISTS
+*/
+app.get("/api/checklists", simpleAuth, async (req, res) => {
+  const result = await pool.query(
+    "SELECT * FROM checklists WHERE owner_id = $1",
+    [req.userId]
+  );
+
+  res.json(result.rows);
+});
+
+/*
+CREATE CHECKLIST
+*/
+app.post("/api/checklists", simpleAuth, async (req, res) => {
+  const { title } = req.body;
+
+  const result = await pool.query(
+    "INSERT INTO checklists (title, owner_id) VALUES ($1, $2) RETURNING *",
+    [title, req.userId]
+  );
+
+  res.json(result.rows[0]);
+});
+
+app.delete("/api/checklists/:id", simpleAuth, async (req, res) => {
+  await pool.query(
+    "DELETE FROM checklists WHERE id = $1 AND owner_id = $2",
+    [req.params.id, req.userId]
+  );
+
+  res.json({ message: "Deleted" });
+});
+
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
