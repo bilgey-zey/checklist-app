@@ -75,3 +75,7 @@ This project demonstrates:
 - Database integration
 - Frontend and backend integration
 - Basic access control
+
+## Test Credentials
+
+You can use the following account to test the application: test_login_credentials.json
