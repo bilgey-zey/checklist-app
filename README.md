@@ -27,21 +27,6 @@ Backend:
 - PostgreSQL (Neon)
 - bcrypt
 
-## Project Structure
-
-shared-checklist-api/
-│
-├── server.js
-├── db.js
-├── package.json
-├── .env
-│
-└── frontend/
-├── index.html
-├── todos.html
-├── css/
-└── js/
-
 ## Installation
 
 1. Install dependencies:
