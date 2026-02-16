@@ -75,4 +75,3 @@ This project demonstrates:
 - Database integration
 - Frontend and backend integration
 - Basic access control
-```
