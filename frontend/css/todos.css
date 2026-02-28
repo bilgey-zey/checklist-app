@@ -152,3 +152,9 @@ body {
   font-weight: 600;
   cursor: pointer;
 }
+
+.todo-item.completed span {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
