@@ -1,3 +1,5 @@
+console.log("AUTH JS ON RENDER v2");
+
 let isLogin = true;
 
 const formTitle = document.getElementById("formTitle");
