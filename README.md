@@ -4,6 +4,10 @@ This is a simple shared checklist web application built with Node.js, Express an
 
 The application allows users to register, log in, create checklists and share them with other users.
 
+## Live Demo
+
+https://checklist-app-t5r7.onrender.com
+
 ## Features
 
 - User registration
@@ -24,26 +28,8 @@ Frontend:
 Backend:
 - Node.js
 - Express.js
-- PostgreSQL (Neon)
+- PostgreSQL
 - bcrypt
-
-## Installation
-
-1. Install dependencies:
-
-npm install
-
-2. Create a `.env` file and add your Neon database URL:
-
-DATABASE_URL=your_database_url
-
-3. Start the server:
-
-node server.js
-
-4. Open in browser:
-
-[http://localhost:3000]
 
 ## Database Tables
 

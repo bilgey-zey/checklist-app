@@ -1,3 +1,5 @@
+console.log("AUTH JS ON RENDER v2");
+
 let isLogin = true;
 
 const formTitle = document.getElementById("formTitle");
@@ -25,8 +27,8 @@ async function submitForm() {
   messageBox.style.color = "black";
 
   const endpoint = isLogin
-    ? "http://localhost:3000/api/login"
-    : "http://localhost:3000/api/register";
+    ? "/api/login"
+    : "/api/register";
 
   try {
     const response = await fetch(endpoint, {
@@ -42,7 +44,7 @@ async function submitForm() {
         localStorage.setItem("userId", data.userId);
         messageBox.style.color = "green";
         messageBox.innerText = "Login successful!";
-        window.location.href = "http://localhost:3000/todos.html";
+        window.location.href = "/todos.html";
       } else {
         messageBox.style.color = "green";
         messageBox.innerText = "Register successful! You can now login.";
