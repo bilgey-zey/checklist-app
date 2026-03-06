@@ -3,34 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#4f46e5" />
+<link rel="manifest" href="/manifest.json" />
+  <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
   <title>Auth</title>
 
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
 
-  <div class="card">
-    <h2 id="formTitle">Login</h2>
+  <main class="auth-shell" aria-label="Authentication">
+    <section class="auth-brand">
+      <div class="auth-logo" aria-hidden="true">✓</div>
+      <h1 id="appTitle" class="auth-title">Shared Checklist</h1>
+      <p id="appTagline" class="auth-subtitle">Organize tasks together, even when you are offline.</p>
+      <label class="lang-select-wrapper">
+        <span class="sr-only">Language</span>
+        <select id="langSelectAuth" class="lang-select">
+          <option value="tr">Türkçe</option>
+          <option value="en">English</option>
+          <option value="no">Norsk</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="card" aria-labelledby="formTitle">
+      <h2 id="formTitle">Login</h2>
 
     <div class="input-group">
-      <label>Email</label>
-      <input type="email" id="email" />
+      <label id="emailLabel" for="email">Email</label>
+      <input type="email" id="email" autocomplete="email" required />
     </div>
 
     <div class="input-group">
-      <label>Password</label>
-      <input type="password" id="password" />
+      <label id="passwordLabel" for="password">Password</label>
+      <input type="password" id="password" autocomplete="current-password" required />
     </div>
 
-    <button id="submitBtn">Submit</button>
+    <button id="submitBtn" type="button">Submit</button>
 
-    <div class="message" id="message"></div>
+    <div class="message" id="message" role="status" aria-live="polite"></div>
 
     <div class="switch">
-      <span id="toggleText">Don't have an account? Register</span>
+      <button id="toggleBtn" type="button" class="link-btn">Don't have an account? Register</button>
     </div>
-  </div>
+    </section>
+  </main>
 
   <script type="module" src="/js/auth.js"></script>
+  <script type="module" src="/js/register-sw.js"></script>
 </body>
 </html>

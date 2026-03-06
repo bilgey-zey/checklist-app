@@ -5,10 +5,31 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #4f46e5, #9333ea);
+  background: radial-gradient(circle at top left, #f9a8d4, #60a5fa 65%);
   display: flex;
   justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   padding: 40px 20px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+input:focus-visible,
+button:focus-visible,
+.todo-item:focus-visible {
+  outline: 3px solid #111827;
+  outline-offset: 2px;
 }
 
 /* Wrapper */
@@ -19,10 +40,10 @@ body {
 
 /* Card */
 .card {
-  background: white;
-  padding: 35px;
+  background: #fdf2f8;
+  padding: 30px 28px;
   border-radius: 20px;
-  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+  box-shadow: 0 18px 36px rgba(15,23,42,0.32);
 }
 
 /* Header */
@@ -33,13 +54,21 @@ body {
   margin-bottom: 25px;
 }
 
-.card-header h2 {
+.todos-title {
+  margin: 0 0 4px;
+  font-size: 22px;
+  color: #111827;
+}
+
+.todos-subtitle {
   margin: 0;
+  font-size: 13px;
+  color: #6b7280;
 }
 
 /* Logout */
 .logout-btn {
-  background: #ef4444;
+  background: #fb7185;
   color: white;
   border: none;
   padding: 8px 16px;
@@ -48,11 +77,55 @@ body {
   font-weight: 500;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lang-select-wrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
+.lang-select {
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+  color: #374151;
+  font-size: 11px;
+  cursor: pointer;
+}
+
 /* Add section */
 .add-section {
   display: flex;
   gap: 12px;
   margin-bottom: 25px;
+}
+
+.tabs {
+  display: inline-flex;
+  background: #e5e7eb;
+  border-radius: 999px;
+  padding: 3px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  border: none;
+  background: transparent;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  cursor: pointer;
+  color: #4b5563;
+}
+
+.tab--active {
+  background: #111827;
+  color: #f9fafb;
 }
 
 .add-section input {
@@ -67,7 +140,7 @@ body {
   padding: 12px 20px;
   border-radius: 12px;
   border: none;
-  background: #4f46e5;
+  background: #60a5fa;
   color: white;
   cursor: pointer;
   font-weight: 500;
@@ -81,6 +154,27 @@ body {
   margin-bottom: 30px;
 }
 
+.empty-state {
+  padding: 18px 16px;
+  border-radius: 14px;
+  border: 1px dashed #d1d5db;
+  background: #f9fafb;
+  margin-bottom: 24px;
+}
+
+.empty-title {
+  margin: 0 0 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.empty-text {
+  margin: 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
 /* Todo item */
 .todo-item {
   display: flex;
@@ -91,6 +185,11 @@ body {
   border: 1px solid #eee;
   background: #f8f8f8;
   transition: 0.2s ease;
+}
+
+.todo-item.selected {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.18);
 }
 
 .todo-item:hover {
@@ -114,12 +213,12 @@ body {
 }
 
 .edit-btn {
-  background: #3b82f6;
+  background: #60a5fa;
   color: white;
 }
 
 .delete-btn {
-  background: #ef4444;
+  background: #fb7185;
   color: white;
 }
 
